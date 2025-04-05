@@ -1,5 +1,4 @@
-### **🌟 Project Name: AI Content Forge**  
-A name that reflects **AI-powered content creation and management**—feel free to modify it if you have something cooler in mind!  
+### **🌟 Project Name: AI Content Forge**   
 
 ---
 
@@ -21,11 +20,6 @@ A name that reflects **AI-powered content creation and management**—feel free 
 - **Practical & scalable**—you can even monetize it!  
 
 ---
-
-### **🚀 Next Steps: Where Do You Want to Start?**  
-- **Basic Next.js + Prisma setup?**  
-- **AI API integration?**  
-- **Docker & DevOps pipeline first?**  
 
 ### **📂 Folder Structure, Tools, and Project Plan**  
 Here’s a **structured plan** for building the **AI-Powered Content Generator & Manager** with **Next.js, Prisma, Supabase, Google Gemini API, and DevOps (CI/CD, Docker, Cloud Infra).**  

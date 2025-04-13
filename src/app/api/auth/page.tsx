@@ -3,19 +3,25 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 
 export default function AuthPage() {
   const [email,setEmail] = useState('')
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const handleLogin = async () => {
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
-    if (error) alert(error.message);
-    else alert("Signed in!");
+
+    if (error) {
+      alert(error.message);
+    } else {
+      router.push("/dashboard");  // Redirect to dashboard after successful login
+    }
   };
 
   const handleSignup = async () => {
@@ -23,8 +29,13 @@ export default function AuthPage() {
       email,
       password,
     });
-    if (error) alert(error.message);
-    else alert("Check your email to confirm sign up!");
+
+    if (error) {
+      alert(error.message);
+    } else {
+      alert("Check your email to confirm sign up!");
+      router.push("/auth");  // You can redirect here after sign-up if you want
+    }
   };
   
 

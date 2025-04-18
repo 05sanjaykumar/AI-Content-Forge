@@ -1,43 +1,35 @@
-"use client";
-import { useState } from "react";
-import { supabase } from "@/lib/supabase";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+// pages/auth.tsx (or app/auth/page.tsx)
+'use client';
 
+import { useState } from 'react';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 export default function AuthPage() {
-  const [email,setEmail] = useState('')
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isSignup, setIsSignup] = useState(false);
   const router = useRouter();
 
-  const handleLogin = async () => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
+  const handleAuth = async () => {
+    const action = isSignup ? 'signup' : 'signin';
+    const res = await fetch('/api/auth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password, action }),
     });
 
-    if (error) {
-      alert(error.message);
+    const data = await res.json();
+
+    if (data.error) {
+      alert(data.error); // Show error if any
     } else {
-      router.push("/dashboard");  // Redirect to dashboard after successful login
+      router.push('/dashboard'); // Redirect to dashboard
     }
   };
-
-  const handleSignup = async () => {
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
-    if (error) {
-      alert(error.message);
-    } else {
-      alert("Check your email to confirm sign up!");
-      router.push("/dashboard");  // You can redirect here after sign-up if you want
-    }
-  };
-  
 
   return (
     <div className="max-w-sm mx-auto mt-20 p-4 border rounded-xl shadow">
@@ -56,9 +48,9 @@ export default function AuthPage() {
         className="mb-2"
       />
       <div className="flex gap-2">
-        <Button onClick={handleLogin}>Sign In</Button>
-        <Button variant="outline" onClick={handleSignup}>Sign Up</Button>
+        <Button onClick={handleAuth}>{isSignup ? 'Sign Up' : 'Sign In'}</Button>
       </div>
+      <Button onClick={() => setIsSignup(!isSignup)}>{isSignup ? 'Already have an account?' : 'Sign Up instead'}</Button>
     </div>
   );
 }

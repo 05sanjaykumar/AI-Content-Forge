@@ -34,7 +34,7 @@ export default function AuthPage() {
       alert(error.message);
     } else {
       alert("Check your email to confirm sign up!");
-      router.push("/auth");  // You can redirect here after sign-up if you want
+      router.push("/dashboard");  // You can redirect here after sign-up if you want
     }
   };
   

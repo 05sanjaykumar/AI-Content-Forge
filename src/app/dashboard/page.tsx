@@ -4,7 +4,8 @@ import DashboardClient from "@/components/dashboard/client";
 
 export default async function DashboardPage() {
   const user = await getUserSession();
-  if (!user) redirect("/auth");
+  console.log('dashboard page')
+  if (!user) redirect("/api/auth");
 
   return <DashboardClient user={user} />;
 }

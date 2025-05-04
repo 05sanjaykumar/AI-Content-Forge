@@ -35,7 +35,7 @@ export function CallToActionSection() {
           className="mt-8"
         >
           <Button size="lg" asChild>
-             <Link href="/signup"> {/* Link to your signup */}
+             <Link href="/generate-content"> {/* Link to your signup */}
               Start Generating Now
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>

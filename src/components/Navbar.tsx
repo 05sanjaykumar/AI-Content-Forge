@@ -36,12 +36,12 @@ export function Navbar() {
           <div className="flex items-center space-x-3">
              {/* In a real app, you'd link these to your auth pages/modals */}
             <Button variant="outline" size="sm" asChild>
-               <Link href="/login"> {/* Replace with your actual login path */}
+               <Link href="/sign-in"> {/* Replace with your actual login path */}
                 <LogIn className="mr-2 h-4 w-4" /> Log In
                </Link>
             </Button>
             <Button size="sm" asChild>
-              <Link href="/signup"> {/* Replace with your actual signup path */}
+              <Link href="/sign-up"> {/* Replace with your actual signup path */}
                 <UserPlus className="mr-2 h-4 w-4" /> Sign Up
               </Link>
             </Button>
